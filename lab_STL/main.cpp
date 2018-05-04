@@ -14,6 +14,7 @@
 #include <set>
 
 using namespace std;
+int k = 0;
 
 int main(int argc, const char * argv[]) {
     // insert code here...
