@@ -14,19 +14,24 @@
 #include <set>
 
 using namespace std;
-int k = 0;
+//int k = 0;
 
 int main(int argc, const char * argv[]) {
     // insert code here...
-    string newStr;
+    cout << "Input size of string " << endl;
+    int sizeOfString;
+    cin >> sizeOfString;
+    cin.get();
+    cout << "Input string " << endl;
+    //string newStr;
     list<char> repiatList, nrList;
-    
-    cin >> newStr;
-    
-    vector<char> newArr(newStr.length());
+    char name[sizeOfString];
+    cin.getline (name, sizeOfString);
+    cout << "'" << name << "'" << endl;
+    vector<char> newArr(sizeof(name));
     vector<char>::iterator it1, it2;
     for(int i = 0; i < newArr.size(); i++){
-        newArr[i] = newStr[i];
+        newArr[i] = name[i];
     }
     sort(newArr.begin(), newArr.end());
     copy( newArr.begin(), newArr.end(), ostream_iterator<char>(cout," / ") );
@@ -35,9 +40,9 @@ int main(int argc, const char * argv[]) {
     it1 = newArr.begin();
     while(it1 < newArr.end()){
         index++;
-        if(it1+1 == newArr.end()){
+        if(*it1 == *(newArr.end()-1)){
             // if the element is last - put into nrList
-            nrList.push_back(*(it1+1));
+            nrList.push_back(*(it1));
             break;
         }
         if(*it1 == *(it1+1)){
@@ -61,10 +66,11 @@ int main(int argc, const char * argv[]) {
     
     copy( nrList.begin(), nrList.end(), ostream_iterator<char>(cout," _ ") );
     cout << endl;
-    copy( repiatList.begin(), repiatList.end(), ostream_iterator<char>(cout," ~ ") );
-    
+    copy( repiatList.begin(), repiatList.end(), ostream_iterator<char>(cout," ' ") );
     cout << "\nHello, World!" << endl;
     return 0;
 }
+
+//int getSize()
 
 
