@@ -14,7 +14,16 @@
 #include <set>
 
 using namespace std;
-//int k = 0;
+
+
+int getSize(list<char> l){
+    return (int)l.size();
+}
+
+void reverseOfList(list<char> l){
+    l.reverse();
+}
+
 
 int main(int argc, const char * argv[]) {
     // insert code here...
@@ -27,15 +36,15 @@ int main(int argc, const char * argv[]) {
     list<char> repiatList, nrList;
     char name[sizeOfString];
     cin.getline (name, sizeOfString);
-    cout << "'" << name << "'" << endl;
     vector<char> newArr(sizeof(name));
     vector<char>::iterator it1, it2;
     for(int i = 0; i < newArr.size(); i++){
         newArr[i] = name[i];
     }
     sort(newArr.begin(), newArr.end());
-    copy( newArr.begin(), newArr.end(), ostream_iterator<char>(cout," / ") );
-    cout << endl;
+    cout << "First vector = '";
+    copy( newArr.begin(), newArr.end(), ostream_iterator<char>(cout,"/") );
+    cout << "'" << endl;
     int index = 0;
     it1 = newArr.begin();
     while(it1 < newArr.end()){
@@ -63,14 +72,17 @@ int main(int argc, const char * argv[]) {
             it1++;
         }
     }
-    
-    copy( nrList.begin(), nrList.end(), ostream_iterator<char>(cout," _ ") );
-    cout << endl;
-    copy( repiatList.begin(), repiatList.end(), ostream_iterator<char>(cout," ' ") );
+    cout << "List with nonrepeat elements = '";
+    copy( nrList.begin(), nrList.end(), ostream_iterator<char>(cout,"_") );
+    cout << "'" << endl << "List with repeat elements = '";
+    copy( repiatList.begin(), repiatList.end(), ostream_iterator<char>(cout,"-") );
+    cout << "'" << endl;
+    cout << getSize(repiatList) << endl;
+    reverseOfList(nrList);
+    for (list<char>::iterator it=nrList.begin(); it!=nrList.end(); ++it)
+        cout << *it;
     cout << "\nHello, World!" << endl;
     return 0;
 }
-
-//int getSize()
 
 
