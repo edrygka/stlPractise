@@ -6,22 +6,6 @@
 //  Copyright © 2018 Macbook. All rights reserved.
 //
 
-//#include <iostream>     // std::cin, std::cout
-//
-//int main () {
-//    char name[256], title[256];
-//
-//    std::cout << "Please, enter your name: ";
-//    std::cin.getline (name,256);
-//
-//    std::cout << "Please, enter your favourite movie: ";
-//    std::cin.getline (title,256);
-//
-//    std::cout << name << "'s favourite movie is " << title;
-//
-//    return 0;
-//}
-
 #include <iostream>
 #include <list>
 #include <iterator>
@@ -30,7 +14,6 @@
 #include <set>
 
 using namespace std;
-
 
 int getSize(list<char> l){
     return (int)l.size();
@@ -42,7 +25,6 @@ void showList(list<char> l, string s){
     cout << "'" << endl;
 }
 
-//void showVector(
 
 void reverseOfList(list<char> l){
     l.reverse();
@@ -111,8 +93,8 @@ int main(int argc, const char * argv[]) {
     }
     showList(nrList, "nonrepeat");
     showList(repiatList, "repeat");
-    //cout << getSize(nrList) << endl;
-    //reverseOfList(nrList);
+    cout << getSize(nrList) << endl;
+    reverseOfList(nrList);
     cout << "\nHello, World!" << endl;
     return 0;
 }
