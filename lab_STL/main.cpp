@@ -35,7 +35,8 @@ int main(int argc, const char * argv[]) {
     
     // Define variable
     list<char> repiatList, nrList;
-    vector<char>::iterator it1, it2;
+    vector<char>::iterator it1;
+    list<char>::iterator it2;
     int sizeOfString, index = 0, summary = 0;
     
     // Get from stdin size of string will entered user
@@ -61,35 +62,21 @@ int main(int argc, const char * argv[]) {
     copy( newArr.begin(), newArr.end(), ostream_iterator<char>(cout,"/") );
     cout << "'" << endl;
     it1 = newArr.begin();
-    while(it1 < newArr.end()){
-//        if((int)*it1 == 0) it1++;
-        if(*it1 == *(newArr.end()-1)){
-            // if the element is last - put into nrList
-            nrList.push_back(*(it1));
-            break;
+    for(it1 = newArr.begin(); it1 < newArr.end(); it1++){
+        nrList.push_back(*(it1));
+        if(index == 0){
+            index++;
+            continue;
         }
-        if(*it1 == *(it1+1)){
-            // if we have two same elements, let's calculate how many are there
-            int count = 1;
-            cout << "Start " << *it1 << endl;
-            for(it2 = newArr.begin()+index; it2 < newArr.end(); it2++){
-                // count contains how many equals elements
-                if(*it2 == *(it2+1)) count++;
-                else break;
+        if(*(it1-1) == *it1){
+            it2 = find(repiatList.begin(), repiatList.end(), *(it1));
+            if(*it2 == *(it1-1)) {
+                nrList.remove(*(it1-1));
             }
-            summary += count;
-            repiatList.push_back(*it1);
-            // delete all the same elements from newArr
-            //copy(newArr.begin()+index, newArr.begin()+index+count, ostream_iterator<char>(cout,"-"));
-            //newArr.erase(newArr.begin()+index-1, newArr.begin()+index+count);
-            it1 = newArr.begin()+index+summary;
-            cout << "End " << *it1 << endl;
-        } else {
-            // if elements are not equal
-            nrList.push_back(*it1);
-            it1++;
+            else {
+                repiatList.push_back(*(it1));
+            }
         }
-        index++;
     }
     showList(nrList, "nonrepeat");
     showList(repiatList, "repeat");
